@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,5 +18,8 @@ namespace Data.Models
         public virtual ICollection<Objective> CreateObjectives { get; set; } = null!;
         public virtual ICollection<Objective> AssignedObjectives { get; set; } = null!;
         public bool IsDeleted { get; set; }
+
+        [NotMapped]
+        public string Fullname => $"{LastName} {FirstName[0]}. {MiddleName[0]}.";
     }
 }
